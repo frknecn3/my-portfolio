@@ -4,6 +4,16 @@ module.exports = {
   important: true,
   content: ["./src/**/*.{js,jsx}"],
   mode: "jit",
+  purge: {
+    safelist: [
+      'primary',
+      'secondary',
+      'tertiary',
+      'boxShadow',
+      'screens',
+      'backgroundImage'
+    ]
+  },
   theme: {
     extend: {
       colors: {
