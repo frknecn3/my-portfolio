@@ -1,5 +1,5 @@
 {
-  "homepage":"https://frknecn3.github.io/my-portfolio",
+  "homepage":"http://frknecn3.github.io/my-portfolio",
   "name": "developer-portfolio",
   "private": true,
   "version": "0.0.0",
@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
