@@ -16,6 +16,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --anim-color-1: rgb(46, 30, 56);
+    --anim-color-2: rgb(10, 10, 12)
   }
 }
 
@@ -23,4 +25,46 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.code {
+  font-family: 'Google Sans Code';
+}
+.code-alt {
+  font-family: 'Inter';
+}
+
+@keyframes linear-shift {
+  0% {
+    background-position: 0%, 0%;
+
+  }
+
+  100% {
+    background-position: 400%, 0%;
+  }
+}
+
+.hero-bg {
+  background: linear-gradient(to right, var(--anim-color-2) 0% 20%, var(--anim-color-1) 40% 50%, var(--anim-color-2) 80% 100%);
+  background-size: 400% 100%;
+  animation: linear-shift 25s infinite linear;
+  overflow: hidden;
+}
+
+
+@layer base {
+  body {
+    @apply bg-[#090A0F];
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0, transparent 50%), 
+      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.3) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom interactive optimizations */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
