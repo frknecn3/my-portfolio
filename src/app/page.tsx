@@ -1,6 +1,7 @@
 'use client'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { FaBook } from 'react-icons/fa';
+import { FaBook, FaClock, FaGithub, FaGlobe, FaLinkedin, FaPhone } from 'react-icons/fa';
 import { FaComputer } from 'react-icons/fa6';
 import { LuUniversity } from 'react-icons/lu';
 
@@ -14,6 +15,12 @@ type Project = {
 
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'work' | 'about' | 'contact'>('work');
+
+  const time = new Date().toLocaleString('en-US', {
+    timeZone: 'Europe/Istanbul'
+  }).split(' ')[1];
+
+  console.log(time)
 
   const projects: Project[] = [
     {
@@ -37,6 +44,8 @@ const Home: React.FC = () => {
     }
   ];
 
+
+
   let currentTab;
 
   switch (activeTab) {
@@ -50,9 +59,9 @@ const Home: React.FC = () => {
             >
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-xl"></div>
               <span className="text-xs font-mono text-zinc-500 block mb-2">{project.category}</span>
-              <a href={project.link}>
+              <Link href={project.link} target='_blank'>
                 <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors mb-4">{project.title}</h3>
-              </a>
+              </Link>
 
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tech.map((t, idx) => (
@@ -65,15 +74,15 @@ const Home: React.FC = () => {
               <div className='mt-auto inline-flex gap-2'>
                 {
                   project.demo &&
-                  <a target='_blank' className='inline-block px-2 py-1 rounded-sm bg-blue-800 text-white mt-4 hover:brightness-115 transition-all' href={project.demo}>
+                  <Link target='_blank' className='inline-block px-2 py-1 rounded-sm bg-blue-800 text-white mt-4 hover:brightness-115 transition-all' href={project.demo}>
                     Live Demo
-                  </a>
+                  </Link>
                 }
                 {
                   project.link !== '' &&
-                  <a target='_blank' className=' border border-neutral-700 inline-block px-2 py-1 rounded-sm bg-neutral-900 text-white mt-4 hover:brightness-115 transition-all' href={project.link}>
+                  <Link target='_blank' className=' border border-neutral-700 inline-block px-2 py-1 rounded-sm bg-neutral-900 text-white mt-4 hover:brightness-115 transition-all' href={project.link}>
                     GitHub
-                  </a>
+                  </Link>
                 }
               </div>
             </div>
@@ -224,6 +233,19 @@ const Home: React.FC = () => {
                 </div>
                 <div className='flex items-center gap-2'>
                   <FaComputer /> Computer Programming
+                </div>
+                <div className='flex items-center gap-2'>
+                  <FaGlobe />Istanbul, Türkiye
+                </div>
+                <div className='flex items-center gap-2'>
+                  <FaClock />GMT+3 - {time}
+                </div>
+                <div className='flex items-center '>
+                  <Link href='tel:+905056239321' className='inline-flex items-center  gap-2 hover:underline'><FaPhone />+90 505 623 93 21</Link>
+                </div>
+                <div className='flex gap-4'>
+                  <Link className='hover:underline inline-flex items-center gap-1.5' href="https://github.com/frknecn3" target='_blank'><FaGithub />GitHub</Link>
+                  <Link className='hover:underline inline-flex items-center gap-1.5' href="https://linkedin.com/in/frknecn3" target='_blank'><FaLinkedin />LinkedIn</Link>
                 </div>
               </div>
             </div>
