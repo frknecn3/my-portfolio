@@ -172,7 +172,7 @@ const Home: React.FC = () => {
           </div>
 
           <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed font-normal">
-            Software engineer who focuses on scalable full-stack architectures.
+            Software engineer who focuses on full-stack applications with strong architectural foundations.
           </p>
         </section>
 
