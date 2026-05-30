@@ -242,7 +242,7 @@ const Home: React.FC = () => {
                   <FaClock />GMT+3 - {time}
                 </div>
                 <div className='flex items-center '>
-                  <Link href='mailto:furkanduhannuman@gmail.com' className='inline-flex items-center  gap-2 hover:underline'><MdEmail />E-mail</Link>
+                  <Link href='mailto:furkanduhannuman@gmail.com' className='inline-flex items-center  gap-2 hover:underline'><MdEmail />furkanduhannuman@gmail.com</Link>
                 </div>
                 <div className='flex gap-4'>
                   <Link className='hover:underline inline-flex items-center gap-1.5' href="https://github.com/frknecn3" target='_blank'><FaGithub />GitHub</Link>
