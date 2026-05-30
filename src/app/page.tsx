@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { FaBook, FaClock, FaGithub, FaGlobe, FaLinkedin, FaPhone } from 'react-icons/fa';
+import { FaBook, FaClock, FaGithub, FaGlobe, FaLinkedin, FaMoon, FaPhone, FaSun } from 'react-icons/fa';
 import { FaComputer } from 'react-icons/fa6';
 import { LuUniversity } from 'react-icons/lu';
 import { MdEmail } from 'react-icons/md';
@@ -17,11 +17,16 @@ type Project = {
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'work' | 'about' | 'contact'>('work');
 
-  const time = new Date().toLocaleString('en-US', {
+  const rawTimeEN = new Date().toLocaleString('en-US', {
     timeZone: 'Europe/Istanbul'
-  }).split(' ')[1];
+  }).split(' ');
+  const rawTimeTR = new Date().toLocaleString('tr-TR', {
+    timeZone: 'Europe/Istanbul'
+  }).split(' ');
 
-  console.log(time)
+  const time = `${rawTimeEN[1]} ${rawTimeEN[2]}`
+  const hour = Number(rawTimeTR[1].split(':')[0])
+  const logo = hour > 6 && hour < 19 ? { isDay: true, logo: <FaSun color='rgb(255,205,100)' /> } : { isDay: false, logo: <FaMoon /> }
 
   const projects: Project[] = [
     {
@@ -239,7 +244,7 @@ const Home: React.FC = () => {
                   <FaGlobe />Istanbul, Türkiye
                 </div>
                 <div className='flex items-center gap-2'>
-                  <FaClock />GMT+3 - {time}
+                  <FaClock />GMT+3 - {time} - <span title={logo.isDay ? 'Daytime' : 'Nighttime'}>{logo.logo}</span>
                 </div>
                 <div className='flex items-center '>
                   <Link href='mailto:furkanduhannuman@gmail.com' className='inline-flex items-center  gap-2 hover:underline'><MdEmail />furkanduhannuman@gmail.com</Link>
